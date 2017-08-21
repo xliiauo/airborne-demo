@@ -7,3 +7,13 @@ services:
       - "50000:50000"
     volumes:
       - "./jenkins_home:/var/jenkins_home"
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    ports:
+      - "443:443"
+      - "80:80"
+      - "22:22"
+    volumes:
+      - "./gitlab/config:/etc/gitlab"
+      - "./gitlab/logs:/var/log/gitlab"
+      - "./gitlab/data:/var/opt/gitlab"
