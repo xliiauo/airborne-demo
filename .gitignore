@@ -5,3 +5,5 @@
 /.bundle/
 /vendor/bundle
 /lib/bundler/man/
+
+jenkins/jenkins_home/*
