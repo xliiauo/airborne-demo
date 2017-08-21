@@ -8,3 +8,4 @@
 
 jenkins/jenkins_home/*
 jenkins/gitlab/*
+!**/.keep
