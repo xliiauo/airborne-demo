@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage("Spin up the project") {
       steps {
-        sh "docker --version"
+        sh "cd main"
+        sh "docker build -t main ."
+        sh "docker run -d -p 4567:4567 main"
       }
     }
     stage("Run component test") {
