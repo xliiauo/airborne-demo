@@ -4,7 +4,7 @@ WORKDIR /app
 
 ADD . .
 
-RUN apk --update add g++ musl-dev make &&\
+RUN apk --update add g++ musl-dev make
 
 RUN bundle install
 
