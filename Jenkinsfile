@@ -14,4 +14,9 @@ pipeline {
       }
     }
   }
+  post {
+    always {
+      sh "docker stop main && docker rm main"
+    }
+  }
 }
