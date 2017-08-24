@@ -22,7 +22,7 @@ pipeline {
   post {
     always {
       sh "cd main && docker-compose down"
-      sh "docker network rm compose-test"
+      sh "docker network rm component-test"
     }
   }
 }
