@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage("Spin up the project") {
       steps {
-        dir "main"
-        sh "docker-compose up -d"
+        sh "docker build -t main ./main/."
+        sh "docker run --name main -d -p 4567:4567 main"
       }
     }
     stage("Run component test") {
