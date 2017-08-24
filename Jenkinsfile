@@ -1,12 +1,13 @@
 pipeline {
-  agent { docker "ruby:2.4.1-alpine" }
+  agent any
   stages {
-    stage("Spring up the project") {
+    stage("Spin up the project") {
       steps {
         sh "docker --version"
       }
     }
-    stage("Test") {
+    stage("Run component test") {
+      agent { docker "ruby:2.4.1-alpine" }
       steps {
         sh "ruby --version"
       }
