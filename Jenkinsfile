@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage("Spin up the project") {
       steps {
-        sh "cd main"
-        sh "docker build -t main ."
+        sh "docker build -t main ./main/."
         sh "docker run -d -p 4567:4567 main"
       }
     }
