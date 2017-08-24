@@ -3,3 +3,8 @@ services:
   main:
     build: .
     image: main
+
+networks:
+  default:
+    external:
+      name: component-test

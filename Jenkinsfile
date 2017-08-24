@@ -3,13 +3,17 @@ pipeline {
   stages {
     stage("Spin up the project") {
       steps {
-        /* sh "docker build -t main ./main/." */
-        /* sh "docker run --name main -d -p 4567:4567 main" */
+        sh "docker network create component-test"
         sh "cd main && docker-compose up -d"
       }
     }
     stage("Run component test") {
-      agent { dockerfile { dir "test" } }
+      agent {
+        dockerfile {
+          dir "test"
+          args "--network component-test"
+        }
+      }
       steps {
         sh "cd test && BASE_URL=main:4567 rspec"
       }
@@ -17,8 +21,8 @@ pipeline {
   }
   post {
     always {
-      /* sh "docker stop main && docker rm main" */
       sh "cd main && docker-compose down"
+      sh "docker network rm compose-test"
     }
   }
 }
