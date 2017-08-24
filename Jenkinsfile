@@ -10,6 +10,7 @@ pipeline {
     stage("Run component test") {
       agent { dockerfile { dir "test" } }
       steps {
+        dir "test"
         sh "BASE_URL=main:4567 rspec"
       }
     }
